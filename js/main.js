@@ -1,4 +1,3 @@
-//Lógica
 function Chat(_nombre, _imagen,_position)
 {
 	this.nombre =  _nombre;
@@ -10,9 +9,9 @@ function Chat(_nombre, _imagen,_position)
 	this.tamano=0;
 	this.posicion=_position;
 	this.ultimo="";
+	this.ultimohora="";
 	this.borrarMensajes = function()
 	{
-		//alert("borrado");
 	};
 	this.tamano= function(){
 		return misChats.length;
@@ -23,6 +22,10 @@ function Chat(_nombre, _imagen,_position)
 	this.getUltimo= function(){
 		this.ultimo=this.misChats[this.misChats.length-1]
 		return this.ultimo;
+	}
+	this.getUltimaHora= function(){
+		this.ultimohora=this.mishoras[this.mishoras.length-1]
+		return this.ultimohora;
 	}
 }
 
@@ -39,8 +42,6 @@ var dataListaChats = [
 	new Chat("chat 10", 'image/logocodeacademy.png',10),
 	new Chat("chat 11", 'image/logocodeacademy.png',11)
 ];
-
-
 //Parte visual
 var liListItem = null;
 
@@ -150,7 +151,7 @@ function actualizarUltimoChat(_contactName,_mensaje){
 		for (var i=0; i< ul.childNodes.length;i++)
 		{
 			
-			//console.log(ul.getElementsByTagName("h4")[i].textContent);
+			//console.log(ul.childNodes[i].childNodes[1]);
 			if(ul.getElementsByTagName("h4")[i].textContent==_contactName)
 			{
 				//console.log(ul.getElementsByTagName("h4")[i].textContent);
@@ -159,6 +160,7 @@ function actualizarUltimoChat(_contactName,_mensaje){
 					if(dataListaChats[x].nombre==ul.getElementsByTagName("h4")[i].textContent)
 					{
 						ul.getElementsByTagName("p")[x].textContent=dataListaChats[x].getUltimo();
+						ul.childNodes[i].childNodes[1].textContent= dataListaChats[x].getUltimaHora();
 					}
 				}
 			}
@@ -190,11 +192,7 @@ function actualizarCabeceraChat(_contactName, _imageURL, _estado) {
 		{
 			for(x in dataListaChats[i].misChats)
 			{
-				//console.log(dataListaChats[i].misChats[x]);
-				//crearChat(dataListaChats[i].misChats[x]);
-				//crearMensaje(dataListaChats[i].misChats[x],_contactName);
 				dibujarChats(dataListaChats[i].misChats[x],_contactName,dataListaChats[i].mishoras[x]);
-
 			}
 		
 		}
