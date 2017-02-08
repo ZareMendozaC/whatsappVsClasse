@@ -30,17 +30,17 @@ function Chat(_nombre, _imagen,_position)
 }
 
 var dataListaChats = [
-	new Chat("chat 1", 'image/logocodeacademy.png',1),
-	new Chat("chat 2", 'image/logocodeacademy.png',2),
-	new Chat("chat 3", 'image/logocodeacademy.png',3),
-	new Chat("chat 4", 'image/logocodeacademy.png',4),
-	new Chat("chat 5", 'image/logocodeacademy.png',5),
-	new Chat("chat 6", 'image/logocodeacademy.png',6),
-	new Chat("chat 7", 'image/logocodeacademy.png',7),
-	new Chat("chat 8", 'image/logocodeacademy.png',8),
-	new Chat("chat 9", 'image/logocodeacademy.png',9),
-	new Chat("chat 10", 'image/logocodeacademy.png',10),
-	new Chat("chat 11", 'image/logocodeacademy.png',11)
+	new Chat("Rodrigo", 'image/rodri.jpg',1),
+	new Chat("Javier", 'image/javier.jpg',2),
+	new Chat("Marco", 'image/marco.jpg',3),
+	new Chat("Tony", 'image/tony.jpg',4),
+	new Chat("Daniel", 'image/daniel.jpg',5),
+	new Chat("Luis", 'image/luis.jpg',6),
+	new Chat("Giancarlo", 'image/gian.jpg',7),
+	new Chat("Diana", 'image/andrea.jpg',8),
+	new Chat("Kathy", 'image/katy.jpg',9),
+	new Chat("Pris", 'image/raymi.jpg',10),
+	new Chat("Nataly", 'image/avatar.jpg',11)
 ];
 //Parte visual
 var liListItem = null;
@@ -197,6 +197,17 @@ function actualizarCabeceraChat(_contactName, _imageURL, _estado) {
 		
 		}
 	}
-	
-	
 }
+  var search = document.getElementById("search"),
+    food = document.getElementsByTagName("h4"),
+    forEach = Array.prototype.forEach;
+    console.log(food);
+	search.addEventListener("keyup", function(e){
+    var choice = this.value;
+    forEach.call(food, function(f){
+        if (f.innerHTML.toLowerCase().search(choice.toLowerCase()) == -1)
+            f.parentNode.parentNode.style.display = "none";        
+        else
+            f.parentNode.parentNode.style.display = "block";        
+    });
+},false);
